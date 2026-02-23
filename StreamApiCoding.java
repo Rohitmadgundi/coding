@@ -1,9 +1,24 @@
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class StreamApiCoding {
+
+    public static void findDuplicateCharactersInString(String str){
+
+        str.chars()
+                .mapToObj(c -> (char)c)
+                .collect(Collectors.groupingBy(
+                        Function.identity(),
+                        Collectors.counting()
+                )).entrySet().stream()
+                .filter(e -> e.getValue() > 1)
+                .forEach(System.out::println);
+
+//        return null;
+    }
 
     public static LinkedHashMap<String,Integer> sortMapByValue(Map<String,Integer> map){
 
@@ -28,9 +43,11 @@ public class StreamApiCoding {
         map.put("geeta",47);
         map.put("bhaskar",29);
 
-        LinkedHashMap<String,Integer> sortedMap = sortMapByValue(map);
+//        LinkedHashMap<String,Integer> sortedMap = sortMapByValue(map);
 
-        System.out.println(sortedMap);
+//        System.out.println(sortedMap);
+
+        findDuplicateCharactersInString("aaaafrohitbbbcrea");
     }
 
 }

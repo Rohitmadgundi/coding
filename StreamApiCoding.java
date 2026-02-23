@@ -6,6 +6,23 @@ import java.util.stream.Collectors;
 
 public class StreamApiCoding {
 
+    public static char firstNonRepeatingCharacter(String str){
+
+//        if (str == null)
+//            return 'c';
+        return str.chars()
+        .mapToObj(c -> (char)c)
+        .collect(Collectors.groupingBy(
+                Function.identity(),
+                LinkedHashMap::new,
+                Collectors.counting()
+        )).entrySet().stream()
+                .filter(e -> e.getValue().equals(1L))
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .orElse(null);
+    }
+
     public static void findDuplicateCharactersInString(String str){
 
         str.chars()
@@ -47,7 +64,8 @@ public class StreamApiCoding {
 
 //        System.out.println(sortedMap);
 
-        findDuplicateCharactersInString("aaaafrohitbbbcrea");
+//        findDuplicateCharactersInString("aaaafrohitbbbcrea");
+        System.out.println(firstNonRepeatingCharacter("aaaafrohitbbbcrea"));
     }
 
 }

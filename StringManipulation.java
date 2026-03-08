@@ -1,6 +1,17 @@
+import java.util.Arrays;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class StringManipulation {
+
+    public static String reverseIndivisualWordsInAString(String str){
+
+        //1 . Stream API Approach
+
+        return Arrays.stream(str.split(" "))
+                .map(word -> new StringBuilder(word).reverse().toString())
+                .collect(Collectors.joining());
+    }
 
     public static boolean validParenthesis(String str){
 

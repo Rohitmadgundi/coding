@@ -10,7 +10,18 @@ public class StringManipulation {
 
         return Arrays.stream(str.split(" "))
                 .map(word -> new StringBuilder(word).reverse().toString())
-                .collect(Collectors.joining());
+                .collect(Collectors.joining(" "));
+
+
+//        2 . Normal Java Approach
+
+//        StringBuilder result = new StringBuilder();
+//
+//        for (String i : str.split(" ")){
+//            result.append(new StringBuilder(i).reverse().append(" "));
+//        }
+//
+//        return result.toString().strip();
     }
 
     public static boolean validParenthesis(String str){
@@ -53,13 +64,12 @@ public class StringManipulation {
 
         String str = "rohit madgundi";
 
-        System.out.println(reverseString(str));
+//        System.out.println(reverseString(str));
 
-        //ValidParenthesis
-        // ()[]{}
+//        System.out.println(validParenthesis("()[]{}"));
 
-        System.out.println(validParenthesis("()[]{}"));
 
+        System.out.println(reverseIndivisualWordsInAString(str));
     }
 
 }

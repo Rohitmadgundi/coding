@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -5,6 +6,14 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class StreamApiCoding {
+
+    public static Map<String,Long> frequencyOfWordsInAString(String str){
+        return Arrays.stream(str.split(" "))
+                .collect(Collectors.groupingBy(
+                        Function.identity(),
+                        Collectors.counting()
+                ));
+    }
 
     public static char firstNonRepeatingCharacter(String str){
 
@@ -52,20 +61,24 @@ public class StreamApiCoding {
     }
 
     public static void main(String[] args) {
-        Map<String,Integer> map = new HashMap<>();
 
-        map.put("rohit",24);
-        map.put("shivraj",52);
-        map.put("mahesh",26);
-        map.put("geeta",47);
-        map.put("bhaskar",29);
+        String str = "aaa bbb a rohit rohit ccc ccc dd dd";
+//        Map<String,Integer> map = new HashMap<>();
+//
+//        map.put("rohit",24);
+//        map.put("shivraj",52);
+//        map.put("mahesh",26);
+//        map.put("geeta",47);
+//        map.put("bhaskar",29);
 
 //        LinkedHashMap<String,Integer> sortedMap = sortMapByValue(map);
 
 //        System.out.println(sortedMap);
 
 //        findDuplicateCharactersInString("aaaafrohitbbbcrea");
-        System.out.println(firstNonRepeatingCharacter("aaaafrohitbbbcrea"));
+//        System.out.println(firstNonRepeatingCharacter("aaaafrohitbbbcrea"));
+
+        System.out.println(frequencyOfWordsInAString(str));
     }
 
 }

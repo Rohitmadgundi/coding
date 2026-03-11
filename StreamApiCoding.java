@@ -1,11 +1,21 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class StreamApiCoding {
+
+    public static Employee getEmployeeByMaxAge(List<Employee> employees){
+
+        return employees.stream()
+                .filter(employee -> employee.getLastName() !=null )
+                .max(Comparator.comparingInt(Employee::getAge)).get();
+    }
+
+    public static List<Employee> sortEmployeesByLastName(List<Employee> employees){
+
+        return employees.stream().filter(emp -> emp.getLastName() != null)
+                .sorted(Comparator.comparing(Employee::getLastName)).toList();
+    }
 
     public static Map<String,Long> frequencyOfWordsInAString(String str){
         return Arrays.stream(str.split(" "))
@@ -62,7 +72,7 @@ public class StreamApiCoding {
 
     public static void main(String[] args) {
 
-        String str = "aaa bbb a rohit rohit ccc ccc dd dd";
+//        String str = "aaa bbb a rohit rohit ccc ccc dd dd";
 //        Map<String,Integer> map = new HashMap<>();
 //
 //        map.put("rohit",24);
@@ -78,7 +88,23 @@ public class StreamApiCoding {
 //        findDuplicateCharactersInString("aaaafrohitbbbcrea");
 //        System.out.println(firstNonRepeatingCharacter("aaaafrohitbbbcrea"));
 
-        System.out.println(frequencyOfWordsInAString(str));
+//        System.out.println(frequencyOfWordsInAString(str));
+
+        List<Employee> employeeList = new ArrayList<>();
+        employeeList.add(new Employee(111, "Jiya", "Brein", 32, "Female"));
+        employeeList.add(new Employee(122, "Paul", null, 25, "Male"));
+        employeeList.add(new Employee(133, "Liza", "Theron", 29, "Female"));
+        employeeList.add(new Employee(144, "Murali", null, 28, "Male"));
+
+//        List<Employee> employees = sortEmployeesByLastName(employeeList);
+//
+//        System.out.println(employees);
+//        for (Employee emp : employees){
+//            System.out.println(emp);
+//        }
+
+        System.out.println(getEmployeeByMaxAge(employeeList));
+
     }
 
 }

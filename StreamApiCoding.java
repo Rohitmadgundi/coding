@@ -4,11 +4,17 @@ import java.util.stream.Collectors;
 
 public class StreamApiCoding {
 
-    public static Employee getEmployeeByMaxAge(List<Employee> employees){
+    public static List<String> covertStringsToLowerCase(List<String> strings){
+        return strings.stream()
+                .map(String::toLowerCase)
+                .toList();
+    }
+
+    public static Optional<Employee> getEmployeeByMaxAge(List<Employee> employees){
 
         return employees.stream()
                 .filter(employee -> employee.getLastName() !=null )
-                .max(Comparator.comparingInt(Employee::getAge)).get();
+                .max(Comparator.comparingInt(Employee::getAge));
     }
 
     public static List<Employee> sortEmployeesByLastName(List<Employee> employees){
@@ -25,7 +31,7 @@ public class StreamApiCoding {
                 ));
     }
 
-    public static char firstNonRepeatingCharacter(String str){
+    public static Optional<Character> firstNonRepeatingCharacter(String str){
 
 //        if (str == null)
 //            return 'c';
@@ -38,8 +44,7 @@ public class StreamApiCoding {
         )).entrySet().stream()
                 .filter(e -> e.getValue().equals(1L))
                 .map(Map.Entry::getKey)
-                .findFirst()
-                .orElse(null);
+                .findFirst();
     }
 
     public static void findDuplicateCharactersInString(String str){
@@ -72,6 +77,8 @@ public class StreamApiCoding {
 
     public static void main(String[] args) {
 
+        List<String> list = Arrays.asList("Rohit", "MAHESH", "Bhaskar", "GEETA", "ShIVraj");
+
 //        String str = "aaa bbb a rohit rohit ccc ccc dd dd";
 //        Map<String,Integer> map = new HashMap<>();
 //
@@ -90,11 +97,11 @@ public class StreamApiCoding {
 
 //        System.out.println(frequencyOfWordsInAString(str));
 
-        List<Employee> employeeList = new ArrayList<>();
-        employeeList.add(new Employee(111, "Jiya", "Brein", 32, "Female"));
-        employeeList.add(new Employee(122, "Paul", null, 25, "Male"));
-        employeeList.add(new Employee(133, "Liza", "Theron", 29, "Female"));
-        employeeList.add(new Employee(144, "Murali", null, 28, "Male"));
+//        List<Employee> employeeList = new ArrayList<>();
+//        employeeList.add(new Employee(111, "Jiya", "Brein", 32, "Female"));
+//        employeeList.add(new Employee(122, "Paul", null, 25, "Male"));
+//        employeeList.add(new Employee(133, "Liza", "Theron", 29, "Female"));
+//        employeeList.add(new Employee(144, "Murali", null, 28, "Male"));
 
 //        List<Employee> employees = sortEmployeesByLastName(employeeList);
 //
@@ -103,8 +110,11 @@ public class StreamApiCoding {
 //            System.out.println(emp);
 //        }
 
-        System.out.println(getEmployeeByMaxAge(employeeList));
+//        getEmployeeByMaxAge(employeeList).ifPresent(System.out::println);
 
+        List<String> lowerCaseStrings = covertStringsToLowerCase(list);
+
+        System.out.println(lowerCaseStrings);
     }
 
 }

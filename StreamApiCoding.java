@@ -4,6 +4,12 @@ import java.util.stream.Collectors;
 
 public class StreamApiCoding {
 
+    public static Optional<String> findWordWithMaximumLength(String str){
+
+        return Arrays.stream(str.split(" "))
+                .max(Comparator.comparingInt(String::length));
+    }
+
     public static List<String> covertStringsToLowerCase(List<String> strings){
         return strings.stream()
                 .map(String::toLowerCase)
@@ -79,7 +85,7 @@ public class StreamApiCoding {
 
         List<String> list = Arrays.asList("Rohit", "MAHESH", "Bhaskar", "GEETA", "ShIVraj");
 
-//        String str = "aaa bbb a rohit rohit ccc ccc dd dd";
+        String str = "aaa bbb a rohit rohit ccc ccc dd dd";
 //        Map<String,Integer> map = new HashMap<>();
 //
 //        map.put("rohit",24);
@@ -112,9 +118,11 @@ public class StreamApiCoding {
 
 //        getEmployeeByMaxAge(employeeList).ifPresent(System.out::println);
 
-        List<String> lowerCaseStrings = covertStringsToLowerCase(list);
+//        List<String> lowerCaseStrings = covertStringsToLowerCase(list);
+//
+//        System.out.println(lowerCaseStrings);
 
-        System.out.println(lowerCaseStrings);
+        findWordWithMaximumLength(str).ifPresent(System.out::println);
     }
 
 }

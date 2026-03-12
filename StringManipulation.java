@@ -6,6 +6,17 @@ import java.util.stream.Collectors;
 
 public class StringManipulation {
 
+    public static boolean checkIfStringsAreAnagram(String str1, String str2){
+
+        char[] ch1 = str1.toCharArray();
+        char[] ch2 = str2.toCharArray();
+
+        Arrays.sort(ch1);
+        Arrays.sort(ch2);
+
+        return Arrays.equals(ch1,ch2);
+    }
+
     public static String reverseIndivisualWordsInAString(String str){
 
         //1 . Stream API Approach
@@ -71,7 +82,9 @@ public class StringManipulation {
 //        System.out.println(validParenthesis("()[]{}"));
 
 
-        System.out.println(reverseIndivisualWordsInAString(str));
+//        System.out.println(reverseIndivisualWordsInAString(str));
+
+        System.out.println(checkIfStringsAreAnagram("cinema","iceman"));
     }
 
 }

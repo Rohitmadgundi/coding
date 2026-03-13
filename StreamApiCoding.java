@@ -4,6 +4,20 @@ import java.util.stream.Collectors;
 
 public class StreamApiCoding {
 
+    public static Map<Integer,String> convertListToMap(List<Employee> emp){
+
+        return emp.stream()
+                .collect(Collectors.toMap(
+                        Employee::getAge,
+                        Employee::getFirstName
+                ));
+    }
+
+    public static int getMaxFromArray(int[] arr){
+        return Arrays.stream(arr)
+                .max().orElse(-1);
+    }
+
     public static Optional<String> findWordWithMaximumLength(String str){
 
         return Arrays.stream(str.split(" "))
@@ -103,11 +117,11 @@ public class StreamApiCoding {
 
 //        System.out.println(frequencyOfWordsInAString(str));
 
-//        List<Employee> employeeList = new ArrayList<>();
-//        employeeList.add(new Employee(111, "Jiya", "Brein", 32, "Female"));
-//        employeeList.add(new Employee(122, "Paul", null, 25, "Male"));
-//        employeeList.add(new Employee(133, "Liza", "Theron", 29, "Female"));
-//        employeeList.add(new Employee(144, "Murali", null, 28, "Male"));
+        List<Employee> employeeList = new ArrayList<>();
+        employeeList.add(new Employee(111, "Jiya", "Brein", 32, "Female"));
+        employeeList.add(new Employee(122, "Paul", null, 25, "Male"));
+        employeeList.add(new Employee(133, "Liza", "Theron", 29, "Female"));
+        employeeList.add(new Employee(144, "Murali", null, 28, "Male"));
 
 //        List<Employee> employees = sortEmployeesByLastName(employeeList);
 //
@@ -122,7 +136,12 @@ public class StreamApiCoding {
 //
 //        System.out.println(lowerCaseStrings);
 
-        findWordWithMaximumLength(str).ifPresent(System.out::println);
+//        findWordWithMaximumLength(str).ifPresent(System.out::println);
+
+//        System.out.println(getMaxFromArray(new int[]{3,5,6,8}));
+
+//        convertListToMap(employeeList).entrySet().forEach(System.out::println);
+        convertListToMap(employeeList).forEach((k,v) -> System.out.println(k + " -> " + v));
     }
 
 }

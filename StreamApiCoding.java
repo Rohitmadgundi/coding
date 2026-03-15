@@ -4,6 +4,19 @@ import java.util.stream.Collectors;
 
 public class StreamApiCoding {
 
+    public static Map<Character,Long> frequencyOfCharactersInAString(String str){
+        //frequency of characters in a string by excluding spaces
+
+        return str.chars()
+                .mapToObj(c -> (char)c)
+                .filter(c -> c != ' ')
+                .collect(Collectors.groupingBy(
+                        Function.identity(),
+                        Collectors.counting()
+                ));
+
+    }
+
     public static Map<Integer,String> convertListToMap(List<Employee> emp){
 
         return emp.stream()
@@ -100,8 +113,11 @@ public class StreamApiCoding {
         List<String> list = Arrays.asList("Rohit", "MAHESH", "Bhaskar", "GEETA", "ShIVraj");
 
         String str = "aaa bbb a rohit rohit ccc ccc dd dd";
-//        Map<String,Integer> map = new HashMap<>();
-//
+
+        System.out.println(frequencyOfCharactersInAString(str));
+
+        //        Map<String,Integer> map = new HashMap<>();
+////
 //        map.put("rohit",24);
 //        map.put("shivraj",52);
 //        map.put("mahesh",26);
@@ -109,7 +125,7 @@ public class StreamApiCoding {
 //        map.put("bhaskar",29);
 
 //        LinkedHashMap<String,Integer> sortedMap = sortMapByValue(map);
-
+//
 //        System.out.println(sortedMap);
 
 //        findDuplicateCharactersInString("aaaafrohitbbbcrea");
@@ -117,11 +133,11 @@ public class StreamApiCoding {
 
 //        System.out.println(frequencyOfWordsInAString(str));
 
-        List<Employee> employeeList = new ArrayList<>();
-        employeeList.add(new Employee(111, "Jiya", "Brein", 32, "Female"));
-        employeeList.add(new Employee(122, "Paul", null, 25, "Male"));
-        employeeList.add(new Employee(133, "Liza", "Theron", 29, "Female"));
-        employeeList.add(new Employee(144, "Murali", null, 28, "Male"));
+//        List<Employee> employeeList = new ArrayList<>();
+//        employeeList.add(new Employee(111, "Jiya", "Brein", 32, "Female"));
+//        employeeList.add(new Employee(122, "Paul", null, 25, "Male"));
+//        employeeList.add(new Employee(133, "Liza", "Theron", 29, "Female"));
+//        employeeList.add(new Employee(144, "Murali", null, 28, "Male"));
 
 //        List<Employee> employees = sortEmployeesByLastName(employeeList);
 //
@@ -141,7 +157,7 @@ public class StreamApiCoding {
 //        System.out.println(getMaxFromArray(new int[]{3,5,6,8}));
 
 //        convertListToMap(employeeList).entrySet().forEach(System.out::println);
-        convertListToMap(employeeList).forEach((k,v) -> System.out.println(k + " -> " + v));
+//        convertListToMap(employeeList).forEach((k,v) -> System.out.println(k + " -> " + v));
     }
 
 }

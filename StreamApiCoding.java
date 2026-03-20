@@ -4,6 +4,23 @@ import java.util.stream.Collectors;
 
 public class StreamApiCoding {
 
+    public static int lengthOfLongestSubstring(String str){
+        Map<Character,Integer> map = new HashMap<>();
+        int left = 0, maxLength = 0;
+
+        for (int right = 0; right < str.length(); right++){
+            char ch = str.charAt(right);
+            if (map.containsKey(ch)){
+                left = Math.max(left, map.get(ch));
+            }
+
+            map.put(ch,right);
+            maxLength = Math.max(maxLength, right - left + 1);
+        }
+
+        return maxLength;
+    }
+
     public static Map<Character,Long> frequencyOfCharactersInAString(String str){
         //frequency of characters in a string by excluding spaces
 

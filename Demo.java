@@ -23,7 +23,7 @@ public class Demo{
     public static void main(String[] args) {
 
         String s1 = "rohit";
-        String s2 = "madam";
+        String s2 = "mada1";
 
         System.out.println(s1 + " = " + isPalindrome(s1));
         System.out.println(s2 + " = " + isPalindrome(s2));

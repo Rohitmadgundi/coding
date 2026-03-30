@@ -8,6 +8,11 @@ public class StreamApiCoding {
         return list.stream().mapToInt(i -> i).max().orElse(0);
     }
 
+    public static int findSum(List<Integer> list){
+
+        return list.stream().mapToInt(i -> i).sum();
+    }
+
     public static int lengthOfLongestSubstring(String str){
         Map<Character,Integer> map = new HashMap<>();
         int left = 0, maxLength = 0;
@@ -131,11 +136,15 @@ public class StreamApiCoding {
 
     public static void main(String[] args) {
 
-        List<String> list = Arrays.asList("Rohit", "MAHESH", "Bhaskar", "GEETA", "ShIVraj");
+        // List<String> list = Arrays.asList("Rohit", "MAHESH", "Bhaskar", "GEETA", "ShIVraj");
 
-        String str = "aaa bbb a rohit rohit ccc ccc dd dd";
+        // String str = "aaa bbb a rohit rohit ccc ccc dd dd";
 
-        System.out.println(frequencyOfCharactersInAString(str));
+        // System.out.println(frequencyOfCharactersInAString(str));
+
+        List<Integer> list = Arrays.asList(4, 6, 2, 7, 8, 0, 1, 93);
+        // System.out.println(findMax(list));
+        System.out.println(findSum(list));
 
         //        Map<String,Integer> map = new HashMap<>();
 ////

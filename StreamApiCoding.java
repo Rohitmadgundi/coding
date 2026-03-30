@@ -4,6 +4,10 @@ import java.util.stream.Collectors;
 
 public class StreamApiCoding {
 
+    public static int findMax(List<Integer> list){
+        return list.stream().mapToInt(i -> i).max().orElse(0);
+    }
+
     public static int lengthOfLongestSubstring(String str){
         Map<Character,Integer> map = new HashMap<>();
         int left = 0, maxLength = 0;
